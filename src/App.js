@@ -1,22 +1,19 @@
+import { Suspense } from 'react';
+import { NetworkErrorBoundary } from 'rest-hooks';
 import logo from './logo.svg';
 import './App.css';
+
+const loader = (<>Loading...</>);
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Suspense fallback={loader}>
+          <NetworkErrorBoundary>
+          </NetworkErrorBoundary>
+        </Suspense>
       </header>
     </div>
   );
